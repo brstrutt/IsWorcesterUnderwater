@@ -28,12 +28,16 @@ footer{
   font-size: 8px;
 }
 
+footer a{
+  padding-bottom: 10px;
+}
+
 .credits{
   padding: 0;
-  margin: 10;
+  margin: 0;
 }
 
 .credits p{
-  padding: 0;
-  margin: 0;
+  padding: inherit;
+  margin: inherit;
 }
