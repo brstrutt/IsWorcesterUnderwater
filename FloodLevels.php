@@ -19,22 +19,14 @@ function GetMonitoringStationRiverLevel($stationId)
 	$root = "http://environment.data.gov.uk/flood-monitoring";
 	$measuresExtension = "/id/stations/" . strval(stationId) . "/measures";
 
-	$curl = curl_init($root . $measuresExtension);
+	$response = file_get_contents($root . $measuresExtension);
+	/*$curl = curl_init($root . $measuresExtension);
 
 	$response = curl_exec($curl);
 	$err = curl_error($curl);
 
-	curl_close($curl);
-
-	if ($err)
-	{
-		echo "CURL Error #:" . $err;
-	}
-	else
-	{
-		echo "Results:" . $response;
-	}
-
+	curl_close($curl);*/
+	echo "Results:" . $response;
 	return 3;
 }
 ?>
