@@ -35,14 +35,14 @@ function GetMonitoringStationRiverLevel($stationId)
 	$err = curl_error($curl);
 
 	curl_close($curl);
-
+	
 	if ($err)
 	{
 		echo "CURL Error #:" . $err;
 	}
 	else
 	{
-		echo $response;
+		echo "Response: " . $response;
 	}
 
 	return 3;
