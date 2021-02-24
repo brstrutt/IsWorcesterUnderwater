@@ -6,12 +6,12 @@ function IsWorcesterUnderwater()
 
 function GetBarbourneRiverLevel()
 {
-	return GetMonitoringStationRiverLevel(2092);
+	return GetMonitoringStationRiverLevel(2642);
 }
 
 function GetDiglisRiverlLevel()
 {
-	return GetMonitoringStationRiverLevel(2039);
+	return GetMonitoringStationRiverLevel(2085);
 }
 
 function GetMonitoringStationRiverLevel($stationId)
@@ -24,7 +24,7 @@ function GetMonitoringStationRiverLevel($stationId)
 		CURLOPT_URL => $root . $measuresExtension,
 		CURLOPT_POST => True,
 	]);
-	
+
 	$response = curl_exec($curl);
 	$err = curl_error($curl);
 
