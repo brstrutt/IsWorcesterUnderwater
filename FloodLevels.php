@@ -6,17 +6,19 @@ function IsWorcesterUnderwater()
 
 function GetBarbourneRiverLevel()
 {
-	return 3;//GetMonitoringStationRiverLevel(2092);
+	return GetMonitoringStationRiverLevel(2092);
 }
 
-/*function GetDiglisRiverlLevel()
+function GetDiglisRiverlLevel()
 {
 	return GetMonitoringStationRiverLevel(2039);
 }
 
 function GetMonitoringStationRiverLevel($stationId)
 {
-	$root = "http://environment.data.gov.uk/flood-monitoring";
+	return 3;
+}
+/*	$root = "http://environment.data.gov.uk/flood-monitoring";
 	$measuresExtension = "/id/stations/" . strval(stationId) . "/measures";
 	retun 3;
 	/*$curl = curl_init();
