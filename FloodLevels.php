@@ -4,7 +4,7 @@ function IsWorcesterUnderwater()
 	return False;
 }
 
-function GetBarbourneRiverLevel()
+/*function GetBarbourneRiverLevel()
 {
 	return GetMonitoringStationRiverLevel(2092);
 }
@@ -41,6 +41,6 @@ function GetMonitoringStationRiverLevel($stationId)
 		echo "cURL Error #:" . $err;
 	} else {
 		echo $response;
-	}*/
-}
+	}
+}*/
 ?>
