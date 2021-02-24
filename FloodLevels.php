@@ -11,7 +11,7 @@ function IsWorcesterUnderwater()
 
 	$barbourneFlooding = $barbourneLevel > $barbourneFloodingLevel;
 	$diglisFlooding = $diglislevel > $diglisFloodingLevel;
-	return $barbourneFlooding && $diglisFlooding;
+	return $barbourneFlooding;
 }
 
 function GetBarbourneRiverLevel()
