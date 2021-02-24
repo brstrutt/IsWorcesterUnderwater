@@ -32,7 +32,7 @@ function GetMonitoringStationRiverLevel($stationId)
 	else
 	{
 		$resArr = json_decode($response);
-		echo "<pre>"; print_r($resArr); echo "</pre>";
+		echo "<pre>"; print_r($resArr[0]); echo "</pre>";
 	}
 
 	return 3;
