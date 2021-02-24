@@ -30,7 +30,12 @@ function GetMonitoringStationRiverLevel($stationId)
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => "POST",
 	]);
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
 	
+	curl_close($curl);
+
 	return 3;
 }
 /*
@@ -38,8 +43,6 @@ function GetMonitoringStationRiverLevel($stationId)
 
 
 
-	$response = curl_exec($curl);
-	$err = curl_error($curl);
 
 	curl_close($curl);
 
