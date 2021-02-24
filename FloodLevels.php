@@ -4,12 +4,12 @@ function IsWorcesterUnderwater()
 	return False;
 }
 
-/*function GetBarbourneRiverLevel()
+function GetBarbourneRiverLevel()
 {
-	return GetMonitoringStationRiverLevel(2092);
+	return 3;//GetMonitoringStationRiverLevel(2092);
 }
 
-function GetDiglisRiverlLevel()
+/*function GetDiglisRiverlLevel()
 {
 	return GetMonitoringStationRiverLevel(2039);
 }
