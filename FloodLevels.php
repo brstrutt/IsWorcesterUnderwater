@@ -24,6 +24,6 @@ function GetMonitoringStationRiverLevel($stationId)
 	$decodedResponse = json_decode($response, true);
 
 	$riverLevel = $decodedResponse['items'][0]['latestReading']['value'];
-	return intval($riverLevel);
+	return floatval($riverLevel);
 }
 ?>
