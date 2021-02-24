@@ -14,7 +14,12 @@
         $diglisRiverLevel = GetDiglisRiverlLevel();
 
         echo "<p>River Level at Barbourne: " . $barbourneRiverLevel . "m, Arbitrary Flooding threshold: " . $barbourneFloodingLevel . "m</p>";
+        if($barbourneRiverLevel < $barbourneFloodingLevel) echo "<p>Barbourne is not above the flooding threshold</p>";
+        else echo "<p>Barbourne is above the flooding threshold</p>";
+
         echo "<p>River Level at Diglis: " . $diglisRiverLevel . "m, Arbitrary Flooding threshold: " . $diglisFloodingLevel . "m</p>";
+        if($diglisRiverLevel < $diglisFloodingLevel) echo "<p>Diglis is not above the flooding threshold</p>";
+        else echo "<p>Diglis is above the flooding threshold</p>";
       ?>
       <footer>
         <a class="InternalLink" href="/" title="Home">Home</a>
