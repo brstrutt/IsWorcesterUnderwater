@@ -15,7 +15,7 @@ function IsBarbourneFlooding()
 	$isFlooding = $currentLevel >= $barbourneFloodingLevel;
 	echo "CURRENT LEVEL:" . strval($currentLevel);
 	echo "FLOOD LEVEL:" . strval($barbourneFloodingLevel);
-	ehco "IS FLOODING: " . strval($isFlooding);
+	echo "IS FLOODING: " . strval($isFlooding);
 	return $isFlooding;
 }
 
