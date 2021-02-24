@@ -12,9 +12,9 @@ function IsWorcesterUnderwater()
 function IsBarbourneFlooding()
 {
 	$currentLevel = GetBarbourneRiverLevel();
-	$isFlooding = $currentLevel >= $$GLOBALS['barbourneFloodingLevel'];
+	$isFlooding = $currentLevel >= $GLOBALS['barbourneFloodingLevel'];
 	echo "CURRENT LEVEL:" . strval($currentLevel);
-	echo "FLOOD LEVEL:" . strval($barbourneFloodingLevel);
+	echo "FLOOD LEVEL:" . strval($GLOBALS['barbourneFloodingLevel']);
 	echo "IS FLOODING: " . strval($isFlooding);
 	return $isFlooding;
 }
