@@ -10,6 +10,10 @@
     <main>
       <p>No stats here. Nop. Look away please. Nothing to see.</p>
       <! There is actually nothing to see. I haven't implemented it yet. >
+      <? php
+        include_once($_SERVER['DOCUMENT_ROOT'] . "/FloodLevels.php");
+        GetBarbourneRiverLevel();
+      ?>
       <footer>
         <a class="InternalLink" href="/" title="Home">Home</a>
         <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/RequiredCredits.html"); ?>
