@@ -18,11 +18,13 @@ body{
 
 h1{
   text-align: center;
+  padding-top: 100px;
   font-size: 100px;
 }
 
 footer{
   position:fixed;
   bottom: 0;
+  padding-bottom: 0;
   font-size: 8px;
 }
