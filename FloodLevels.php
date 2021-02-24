@@ -26,7 +26,7 @@ function GetMonitoringStationRiverLevel($stationId)
 
 	$decodedResponse = json_decode($response, true);
 	echo $decodedResponse;
-	echo "Items:" . $decodedResponse[0];
+	echo "Items:" . $decodedResponse['items'];
 	/*echo "Station Reference:" . $decodedResponse['items'][0]['stationReference'];
 	echo "Water Level:" . $decodedResponse['items'][0]['latestReading']['value'];*/
 	return 3;
