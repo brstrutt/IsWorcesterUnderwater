@@ -12,10 +12,11 @@
         include_once($_SERVER['DOCUMENT_ROOT'] . "/FloodLevels.php");
         $barbourneRiverLevel = GetBarbourneRiverLevel();
         $diglisRiverLevel = GetDiglisRiverlLevel();
-
-        echo "<p>River Level at Barbourne: " . $barbourneRiverLevel . "m, Arbitrary Flooding threshold: " . $barbourneFloodingLevel . "m</p>";
-        echo "<p>River Level at Diglis: " . $diglisRiverLevel . "m, Arbitrary Flooding threshold: " . $diglisFloodingLevel . "m</p>";
       ?>
+      <?php echo "<p>River Level at Barbourne: " . $barbourneRiverLevel . "m, Arbitrary Flooding threshold: " . $barbourneFloodingLevel . "m</p>"; ?>
+      <p> For more detailed Barbourne river level info click <a href="https://flood-warning-information.service.gov.uk/station/2092" title="Barbourne River Level Info">here</a></p>
+      <?php echo "<p>River Level at Diglis: " . $diglisRiverLevel . "m, Arbitrary Flooding threshold: " . $diglisFloodingLevel . "m</p>"; ?>
+      <p> For more detailed Diglis river level info click <a href="https://flood-warning-information.service.gov.uk/station/2039" title="Diglis River Level Info">here</a></p>
       <footer>
         <a class="InternalLink" href="/" title="Home">Home</a>
         <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/RequiredCredits.html"); ?>
