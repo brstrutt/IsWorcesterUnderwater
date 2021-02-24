@@ -16,7 +16,7 @@ function GetDiglisRiverlLevel()
 
 function GetMonitoringStationRiverLevel(stationId)
 {
-	$root = "http://environment.data.gov.uk/flood-monitoring";
+	//$root = "http://environment.data.gov.uk/flood-monitoring";
 	//$measuresExtension = "/id/stations/" . strval(stationId) . "/measures";
 
 	return 3;
