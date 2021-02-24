@@ -22,9 +22,9 @@ function GetMonitoringStationRiverLevel($stationId)
 
 	$response = file_get_contents($apiAccessUrl);
 
-	$decodedResponse = json_decode($response, JSON_PRETTY_PRINT);
+	$decodedResponse = json_decode($response, true, JSON_PRETTY_PRINT);
 	echo $decodedResponse;
-	echo "Items:" $decodedResponse['items'];
+	//echo "Items:" $decodedResponse['items'];
 	/*echo "Station Reference:" . $decodedResponse['items'][0]['stationReference'];
 	echo "Water Level:" . $decodedResponse['items'][0]['latestReading']['value'];*/
 	return 3;
