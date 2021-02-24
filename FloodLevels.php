@@ -20,12 +20,6 @@ function GetMonitoringStationRiverLevel($stationId)
 	$measuresExtension = "/id/stations/" . strval(stationId) . "/measures";
 
 	$curl = curl_init();
-	
-	return 3;
-}
-/*
-	/*
-
 	curl_setopt_array($curl, [
 		CURLOPT_URL => $root . $measuresExtension,
 		CURLOPT_RETURNTRANSFER => true,
@@ -36,6 +30,13 @@ function GetMonitoringStationRiverLevel($stationId)
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => "POST",
 	]);
+	
+	return 3;
+}
+/*
+	/*
+
+
 
 	$response = curl_exec($curl);
 	$err = curl_error($curl);
