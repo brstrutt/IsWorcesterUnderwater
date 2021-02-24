@@ -21,14 +21,11 @@ function GetMonitoringStationRiverLevel($stationId)
 	$apiAccessUrl = $root . $measuresExtension;
 
 	$response = file_get_contents($apiAccessUrl);
-	/*$curl = curl_init($root . $measuresExtension);
 
-	$response = curl_exec($curl);
-	$err = curl_error($curl);
+	$decodedResponse = json_decode($response);
+	echo "Station Reference:" . $decodedResponse['items'][0]['stationReference'];
+	echo "Water Level:" . $decodedResponse['items'][0]['latestReading']['value'];
 
-	curl_close($curl);*/
-	echo "URL: " . $apiAccessUrl;
-	echo "Results:" . $response;
 	return 3;
 }
 ?>
