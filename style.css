@@ -32,3 +32,8 @@ footer{
   padding: 0;
   margin: 0;
 }
+
+.credits p{
+  padding: inherit;
+  margin: inherit;
+}
