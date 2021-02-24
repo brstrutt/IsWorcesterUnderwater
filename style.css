@@ -13,7 +13,6 @@ body{
   background-color: var(--color-palette-background1);
   font: 100% Helvetica;
   color: var(--color-palette-foreground);
-  height: 100%;
 }
 
 h1{
