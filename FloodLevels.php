@@ -9,7 +9,7 @@ function IsWorcesterUnderwater()
 	$barbourneLevel = GetBarbourneRiverLevel();
 	$diglislevel = GetDiglisRiverlLevel();
 
-	$barbourneFlooding = ($barbourneLevel > $barbourneFloodingLevel);
+	$barbourneFlooding = ($barbourneLevel < $barbourneFloodingLevel);
 	$diglisFlooding = ($diglislevel > $diglisFloodingLevel);
 	return $barbourneFlooding;
 }
