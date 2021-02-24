@@ -9,7 +9,8 @@
   <body>
     <main>
       <?php
-        $worcesterUnderwater = False;
+        include_once($_SERVER['DOCUMENT_ROOT'] . "/FloodLevels.php");
+        $worcesterUnderwater = IsWorcesterUnderwater();
         if($worcesterUnderwater) echo "<h1>Yes*</h1>";
         else echo "<h1>No*</h1>";
       ?>
