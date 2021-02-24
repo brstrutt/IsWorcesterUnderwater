@@ -20,6 +20,10 @@
         echo "<p>River Level at Diglis: " . $diglisRiverLevel . "m, Arbitrary Flooding threshold: " . $diglisFloodingLevel . "m</p>";
         if($diglisRiverLevel < $diglisFloodingLevel) echo "<p>Diglis is not above the flooding threshold</p>";
         else echo "<p>Diglis is above the flooding threshold</p>";
+
+        $barbourneFlooding = $barbourneRiverLevel > $barbourneFloodingLevel;
+        if($barbourneFlooding) echo "YES";
+        else echo "NO";
       ?>
       <footer>
         <a class="InternalLink" href="/" title="Home">Home</a>
