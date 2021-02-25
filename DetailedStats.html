@@ -14,12 +14,36 @@
         $diglisRiverLevel = GetDiglisRiverlLevel();
       ?>
       <section>
-        <?php echo "<p>River Level at Barbourne: " . $barbourneRiverLevel . "m, Arbitrary Flooding threshold: " . $barbourneFloodingLevel . "m</p>"; ?>
-        <p>For more detailed Barbourne river level info click <a href="https://flood-warning-information.service.gov.uk/station/2092" title="Barbourne River Level Info">here</a></p>
+        <p>Barbourne Station Stats:</p>
+        <li>
+          <ul>
+            Current River Level:
+            <?php echo "<div class=\"statValue\">" . $barbourneRiverLevel . "m</div>"; ?>
+          </ul>
+          <ul>
+            Arbitrary Flooding Level:
+            <?php echo "<div class=\"statValue\">" . $barbourneFloodingLevel . "m</div>"; ?>
+          </ul>
+          <ul>
+            Click <a href="https://flood-warning-information.service.gov.uk/station/2092" title="Barbourne River Level Info">here</a> for more detailed info
+          </ul>
+        </li>
       </section>
       <section>
-        <?php echo "<p>River Level at Diglis: " . $diglisRiverLevel . "m, Arbitrary Flooding threshold: " . $diglisFloodingLevel . "m</p>"; ?>
-        <p>For more detailed Diglis river level info click <a href="https://flood-warning-information.service.gov.uk/station/2039" title="Diglis River Level Info">here</a></p>
+        <p>Diglis Station Stats:</p>
+        <li>
+          <ul>
+            Current River Level:
+            <?php echo "<div class=\"statValue\">" . $diglisRiverLevel . "m</div>"; ?>
+          </ul>
+          <ul>
+            Arbitrary Flooding Level:
+            <?php echo "<div class=\"statValue\">" . $diglisFloodingLevel . "m</div>"; ?>
+          </ul>
+          <ul>
+            Click <a href="https://flood-warning-information.service.gov.uk/station/2039" title="Barbourne River Level Info">here</a> for more detailed info
+          </ul>
+        </li>
       </section>
       <section>
         <p>For actual Flood Alerts please click <a href="https://flood-warning-information.service.gov.uk/warnings?location=worcester" title="Worcester Flood Alerts">here</a></p>
