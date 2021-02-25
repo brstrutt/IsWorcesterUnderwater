@@ -14,34 +14,30 @@
         $diglisRiverLevel = GetDiglisRiverlLevel();
       ?>
       <section>
-        <li>Barbourne Station Stats:
-          <ul>
-            Current River Level:
-            <?php echo "<div class=\"statValue\">" . $barbourneRiverLevel . "m</div>"; ?>
-          </ul>
-          <ul>
-            Arbitrary Flooding Level:
-            <?php echo "<div class=\"statValue\">" . $barbourneFloodingLevel . "m</div>"; ?>
-          </ul>
-          <ul>
+        <ul>Barbourne Station Stats:
+          <li>
+            <?php echo "Current River Level: <div class=\"statValue\">" . $barbourneRiverLevel . "m</div>"; ?>
+          </li>
+          <li>
+            <?php echo "Arbitrary Flooding Level: <div class=\"statValue\">" . $barbourneFloodingLevel . "m</div>"; ?>
+          </li>
+          <li>
             Click <a href="https://flood-warning-information.service.gov.uk/station/2092" title="Barbourne River Level Info">here</a> for more detailed info
-          </ul>
-        </li>
+          </li>
+        </ul>
       </section>
       <section>
-        <li>Diglis Station Stats:
-          <ul>
-            Current River Level:
-            <?php echo "<div class=\"statValue\">" . $diglisRiverLevel . "m</div>"; ?>
-          </ul>
-          <ul>
-            Arbitrary Flooding Level:
-            <?php echo "<div class=\"statValue\">" . $diglisFloodingLevel . "m</div>"; ?>
-          </ul>
-          <ul>
+        <ul>Diglis Station Stats:
+          <li>
+            <?php echo "Current River Level: <div class=\"statValue\">" . $diglisRiverLevel . "m</div>"; ?>
+          </li>
+          <li>
+            <?php echo "Arbitrary Flooding Level: <div class=\"statValue\">" . $diglisFloodingLevel . "m</div>"; ?>
+          </li>
+          <li>
             Click <a href="https://flood-warning-information.service.gov.uk/station/2039" title="Barbourne River Level Info">here</a> for more detailed info
-          </ul>
-        </li>
+          </li>
+        </ul>
       </section>
       <section>
         <p>For actual Flood Alerts please click <a href="https://flood-warning-information.service.gov.uk/warnings?location=worcester" title="Worcester Flood Alerts">here</a></p>
