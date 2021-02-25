@@ -46,11 +46,11 @@ a.InternalLink{
   margin: inherit;
 }
 
-li{
-  padding : 10px;
-}
-
 ul{
   padding-top: 5px;
-  margin: 2px;
+  padding-inline-start: 20px;
+}
+
+li{
+  padding-inline-start: 20px;
 }
