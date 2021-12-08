@@ -23,6 +23,9 @@ p{
   margin: inherit;
 }
 
+a:link{ color: blue; }
+a:visited{ color: blue; }
+
 header{
   display: grid;
   grid-template-columns: max-content max-content auto;
@@ -43,11 +46,10 @@ footer{
 
   display: grid;
   grid-template-columns: auto auto;
+  gap: 1%;
 }
 
 .FloodAlertsLink{
-  display: flex;
-  justify-content: flex-end;
   margin: 10px;
   font-size: 200%;
   font-weight: bold;
