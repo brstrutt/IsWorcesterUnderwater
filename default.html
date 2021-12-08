@@ -7,27 +7,44 @@
     <link rel="icon" href="icon.png" />
   </head>
   <body>
+    <?php
+      include_once($_SERVER['DOCUMENT_ROOT'] . "/FloodLevels.php");
+
+      $barbourneRiverLevel = GetBarbourneRiverLevel();
+      $diglisRiverLevel = GetDiglisRiverlLevel();
+
+      $worcesterUnderwater = IsWorcesterUnderwater();
+
+      if($worcesterUnderwater)
+      {
+        $isWorcesterUnderwater = "Yes";
+        $disclaimer = "Worcester may in fact NOT be underwater";
+      }
+      else
+      {
+        $isWorcesterUnderwater = "No";
+        $disclaimer = "Worcester may in fact be underwater";
+      }
+    ?>
     <main>
-      <?php
-        include_once($_SERVER['DOCUMENT_ROOT'] . "/FloodLevels.php");
-        $worcesterUnderwater = IsWorcesterUnderwater();
-        if($worcesterUnderwater) echo "<h1>Yes*</h1>";
-        else echo "<h1>No*</h1>";
-      ?>
+      <header>
+        <p>
+          <a href="https://check-for-flooding.service.gov.uk/station/2092" title="Barbourne River Level Info">Barbourne</a>:
+          <?php echo $barbourneRiverLevel . "m/" . $barbourneFloodingLevel . "m"; ?>
+        </p>
+        <p>
+          <a href="https://check-for-flooding.service.gov.uk/station/2039" title="Diglis River Level Info">Diglis</a>:
+          <?php echo $diglisRiverLevel . "m/" . $diglisFloodingLevel . "m"; ?>
+        </p>
+        <p><a href="https://check-for-flooding.service.gov.uk/location?q=worcester" title="Worcester Flood Alerts">Live Flood Alerts</a></p>
+      </header>
+      <h1><?php echo $isWorcesterUnderwater; ?>*</h1>
+      <p>* Disclaimer: <?php echo $disclaimer; ?></p>
       <footer>
-        <?php
-          if($worcesterUnderwater)
-          {
-            echo "<p>*Disclaimer: Worcester may in fact NOT be underwater</p>";
-          }
-          else
-          {
-            echo "<p>*Disclaimer: Worcester may in fact be underwater</p>";
-          }
-        ?>
-        <p>To see actual Flood Alerts for Worcester please click <a href="https://check-for-flooding.service.gov.uk/location?q=worcester" title="Worcester Flood Alerts">here</a></p>
-        <a class="InternalLink" href="./DetailedStats.html" title="detailed stats">More Detailed Info</a>
-        <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/RequiredCredits.html"); ?>
+        <div class="credits">
+          <p>This uses Environment Agency flood and river level data from the real-time data API (Beta)</p>
+          <div>Icons made by <a href="https://www.flaticon.com/authors/catkuro" title="catkuro">catkuro</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </div>
       </footer>
     </main>
   </body>
