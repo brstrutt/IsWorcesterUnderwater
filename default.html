@@ -13,12 +13,15 @@
       $barbourneRiverLevel = GetBarbourneRiverLevel();
       $diglisRiverLevel = GetDiglisRiverlLevel();
 
-      $worcesterUnderwater = IsWorcesterUnderwater();
-
-      if($worcesterUnderwater)
+      if(IsWorcesterUnderwater())
       {
         $isWorcesterUnderwater = "Yes";
         $disclaimer = "Worcester may in fact NOT be underwater";
+      }
+      else if(IsBarbourneFlooding() || IsDiglisFlooding())
+      {
+        $isWorcesterUnderwater = "Maybe";
+        $disclaimer = "Worcester may be partially underwater";
       }
       else
       {
