@@ -1,7 +1,7 @@
 <?php
 // Flooding levels chosen by adding 1.20m to the "minor flooding is possible" level (values eyeballed)
 // see for those numbers https://flood-warning-information.service.gov.uk/station/2092 and https://flood-warning-information.service.gov.uk/station/2039
-$barbourneFloodingLevel = 4.05;
+$barbourneFloodingLevel = 4.50;
 $diglisFloodingLevel = 3.50;
 
 function IsWorcesterUnderwater()
