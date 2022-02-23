@@ -75,18 +75,15 @@ footer{
 
 .ResultsContent{
   display: grid;
-  grid-auto-rows: max-content max-content;
+  grid-auto-rows: max-content max-content;fill="blue"
   justify-content: center;
 }
 
-.ResultsContent h1{
+svg text{
+  color: var(--color-palette-foreground);
+  font: bold 75% Helvetica;
   font-size: 1400%;
-  margin: 0px;
-}
-
-.ResultsContent p{
-  display: flex;
-  justify-content: center;
+  text-anchor: middle;
 }
 
 .Push{
