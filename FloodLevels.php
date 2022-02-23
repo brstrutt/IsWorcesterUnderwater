@@ -1,24 +1,29 @@
 <?php
-// Flooding levels chosen by adding 1.20m to the "minor flooding is possible" level (values eyeballed)
-// see for those numbers https://flood-warning-information.service.gov.uk/station/2092 and https://flood-warning-information.service.gov.uk/station/2039
-$barbourneFloodingLevel = 4.50;
-$diglisFloodingLevel = 3.50;
+// Eyeball standard river levels and "might be starting to flood" river levels from the following sites
+// https://flood-warning-information.service.gov.uk/station/2092 and https://flood-warning-information.service.gov.uk/station/2039
 
-function IsWorcesterUnderwater()
+$barbourneRiskyLevel = 4.50;
+$barbourneStandardLevel = 2.00;
+
+$diglisRiskyLevel = 3.30;
+$diglisStandardLevel = 1.50;
+
+function GetBarbourneFloodPercentage()
 {
-	return IsBarbourneFlooding() && IsDiglisFlooding();
+	global $barbourneRiskyLevel;
+	global $barbourneStandardLevel;
+
+	$riverLevel = GetBarbourneRiverLevel();
+	return GetFloodPercentage($riverLevel, $barbourneStandardLevel, $barbourneRiskyLevel);
 }
 
-function IsBarbourneFlooding()
+function GetDiglisFloodPercentage()
 {
-	$currentLevel = GetBarbourneRiverLevel();
-	return $currentLevel >= $GLOBALS['barbourneFloodingLevel'];
-}
+	global $diglisRiskyLevel;
+	global $diglisStandardLevel;
 
-function IsDiglisFlooding()
-{
-	$currentLevel = GetDiglisRiverlLevel();
-	return $currentLevel >= $GLOBALS['diglisFloodingLevel'];
+	$riverLevel = GetDiglisRiverlLevel();
+	return GetFloodPercentage($riverLevel, $diglisStandardLevel, $diglisRiskyLevel);
 }
 
 function GetBarbourneRiverLevel()
@@ -29,6 +34,17 @@ function GetBarbourneRiverLevel()
 function GetDiglisRiverlLevel()
 {
 	return GetMonitoringStationRiverLevel(2085);
+}
+
+function GetFloodPercentage($currentLevel, $standardLevel, $riskyLevel)
+{
+	$quarter = $riskyLevel - $standardLevel; // Calculate what 25% of the range is
+	$base = $standardLevel - $quarter; // Calculate what value 0% would be, aka the base of the range
+
+	$scaledLevel = $currentLevel - $base;
+	$percentageMultiplier = 100 / (4.0 * $quarter);
+	$percentage = $scaledLevel * $percentageMultiplier;
+	return max(min($percentage, 100.0), 0.0);
 }
 
 function GetMonitoringStationRiverLevel($stationId)

@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+  include_once($_SERVER['DOCUMENT_ROOT'] . "/FloodLevels.php");
+
+  $barbourneRiverLevel = GetBarbourneRiverLevel();
+  $diglisRiverLevel = GetDiglisRiverlLevel();
+
+  $barbourneRiverPercentage = GetBarbourneFloodPercentage();
+  $diglisRiverPercentage = GetDiglisFloodPercentage();
+?>
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
@@ -7,34 +16,12 @@
     <link rel="icon" href="icon.png" />
     <style type="text/css" media="screen">
       :root {
-        --water-level-barbourne:60%;
-        --water-level-diglis:40%;
+        --water-level-barbourne:<?php echo 100 - $barbourneRiverPercentage; ?>%;
+        --water-level-diglis:<?php echo 100 - $diglisRiverPercentage; ?>%;
       }
     </style>
   </head>
   <body>
-    <?php
-      include_once($_SERVER['DOCUMENT_ROOT'] . "/FloodLevels.php");
-
-      $barbourneRiverLevel = GetBarbourneRiverLevel();
-      $diglisRiverLevel = GetDiglisRiverlLevel();
-
-      if(IsWorcesterUnderwater())
-      {
-        $isWorcesterUnderwater = "Yes";
-        $disclaimer = "Worcester may in fact NOT be underwater";
-      }
-      else if(IsBarbourneFlooding() || IsDiglisFlooding())
-      {
-        $isWorcesterUnderwater = "Maybe";
-        $disclaimer = "Worcester may be partially underwater";
-      }
-      else
-      {
-        $isWorcesterUnderwater = "No";
-        $disclaimer = "Worcester may in fact be underwater";
-      }
-    ?>
     <div class="full_canvas background_water ShowBelowWaterLevel" color="blue"></div>
     <div class="full_canvas result_wrapper ShowAboveWaterLevel">
       <h1 class="result_content" style="color: black;">No</h1>
@@ -46,11 +33,11 @@
       <header>
         <p>
           <a href="https://check-for-flooding.service.gov.uk/station/2092" title="Barbourne River Level Info" target="_blank" rel="noopener noreferrer">Barbourne</a>:
-          <?php echo $barbourneRiverLevel . "m/" . $barbourneFloodingLevel . "m"; ?>
+          <?php echo $barbourneRiverLevel . "m/m"; ?>
         </p>
         <p>
           <a href="https://check-for-flooding.service.gov.uk/station/2039" title="Diglis River Level Info" target="_blank" rel="noopener noreferrer">Diglis</a>:
-          <?php echo $diglisRiverLevel . "m/" . $diglisFloodingLevel . "m"; ?>
+          <?php echo $diglisRiverLevel . "m/m"; ?>
         </p>
         <p class="FloodAlertsLink Push"><a href="https://check-for-flooding.service.gov.uk/location?q=worcester" title="Worcester Flood Alerts" target="_blank" rel="noopener noreferrer">Live Flood Alerts</a></p>
       </header>
