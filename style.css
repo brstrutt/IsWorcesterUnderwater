@@ -3,6 +3,9 @@
   --color-palette-background2:#DDDDDD;
   --color-palette-foreground:#111111;
   --color-palette-highlight:#010101;
+
+  --water-level-barbourne:60%;
+  --water-level-diglis:40%;
 }
 
 html{
@@ -24,13 +27,12 @@ p{
 a:link{ color: blue; }
 a:visited{ color: blue; }
 
-.background_image{
+.full_canvas{
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
 }
 
 .content_overlay{
@@ -42,6 +44,11 @@ a:visited{ color: blue; }
   z-index: 1;
   display: grid;
   grid-template-rows: max-content auto max-content;
+}
+
+.background_water{
+  z-index: -1;
+  background-color: blue;
 }
 
 header{
@@ -73,10 +80,25 @@ footer{
   font-weight: bold;
 }
 
-.ResultsContent{
-  display: grid;
-  grid-auto-rows: max-content max-content;fill="blue"
+.result_wrapper{
+  display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.result_content{
+  position: absolute;
+  text-align: center;
+  font-size: 1400%;
+}
+
+.ShowBelowWaterLevel{
+  clip-path: polygon(0% 100%, 0% var(--water-level-barbourne), 100% var(--water-level-diglis), 100% 100% )
+}
+.ShowAboveWaterLevel{
+  clip-path: polygon(0% 0%, 0% var(--water-level-barbourne), 100% var(--water-level-diglis), 100% 0% )
 }
 
 svg text{
