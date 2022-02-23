@@ -1,6 +1,6 @@
 :root {
   --color-palette-background1:#EEEEEE;
-  --color-palette-background2:#DDDDDD;
+  --color-palette-background2:rgba(255, 255, 255, 0.6);
   --color-palette-foreground:#111111;
   --color-palette-highlight:#010101;
 }
@@ -51,8 +51,11 @@ a:visited{ color: blue; }
 header{
   display: grid;
   grid-template-columns: max-content max-content auto;
-  margin: 0px;
   gap: 1%;
+  background-color: var(--color-palette-background2);
+  margin: 0px;
+  font-size: 200%;
+  font-weight: bold;
 }
 
 main{
@@ -69,12 +72,7 @@ footer{
   display: grid;
   grid-template-columns: auto auto;
   gap: 1%;
-}
-
-.FloodAlertsLink{
-  margin: 10px;
-  font-size: 200%;
-  font-weight: bold;
+  background-color: var(--color-palette-background2);
 }
 
 .result_wrapper{

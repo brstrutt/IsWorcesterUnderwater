@@ -2,7 +2,7 @@
 // Eyeball standard river levels and "might be starting to flood" river levels from the following sites
 // https://flood-warning-information.service.gov.uk/station/2092 and https://flood-warning-information.service.gov.uk/station/2039
 
-$barbourneRiskyLevel = 4.50;
+$barbourneRiskyLevel = 4.00;
 $barbourneStandardLevel = 2.00;
 
 $diglisRiskyLevel = 3.30;
