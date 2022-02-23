@@ -82,7 +82,7 @@ footer{
 svg text{
   color: var(--color-palette-foreground);
   font: bold 75% Helvetica;
-  font-size: 1400%;
+  font-size: 400%;
   text-anchor: middle;
 }
 

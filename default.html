@@ -29,18 +29,18 @@
         $disclaimer = "Worcester may in fact be underwater";
       }
     ?>
-    <svg class="background_image" viewBox="0 0 100% 100%" xmlns="https://www.w3.org/TR/SVG/" version="2.0">
+    <svg class="background_image" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="https://www.w3.org/TR/SVG/" version="2.0">
       <defs>
         <clipPath id="WaterLevel">
           <title>Water level Clip Path</title>
           <desc>an svg rectangle to clip out anything above the water level</desc>
-          <rect x="0" y="20%" width="100%" height="100%" />
+          <polygon points="0,100 0,75 100,50 100,100" />
         </clipPath>
         <clipPath id="NoText">
-          <text class="ResultsContent" x="50%" y="55%">NO</text>
+          <text class="ResultsContent" x="50%" y="55%">No</text>
         </clipPath>
         <clipPath id="YesText" clip-path="url(#WaterLevel)">
-          <text class="ResultsContent" x="50%" y="55%">YES</text>
+          <text class="ResultsContent" x="50%" y="55%">Yes</text>
         </clipPath>
       </defs>
       <rect clip-path="url(#NoText)" x="0" y="0" width="100%" height="100%" fill="black" />
