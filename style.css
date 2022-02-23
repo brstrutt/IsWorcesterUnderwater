@@ -15,8 +15,6 @@ body{
   color: var(--color-palette-foreground);
   margin: inherit;
   height: 100%;
-  display: grid;
-  grid-template-rows: max-content auto max-content;
 }
 
 p{
@@ -25,6 +23,26 @@ p{
 
 a:link{ color: blue; }
 a:visited{ color: blue; }
+
+.background_image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.content_overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+}
 
 header{
   display: grid;
