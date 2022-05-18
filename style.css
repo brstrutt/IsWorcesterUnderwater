@@ -89,13 +89,6 @@ footer{
   font-size: 1400%;
 }
 
-.ShowBelowWaterLevel{
-  clip-path: polygon(0% 100%, 0% var(--water-level-barbourne), 100% var(--water-level-diglis), 100% 100% )
-}
-.ShowAboveWaterLevel{
-  clip-path: polygon(0% 0%, 0% var(--water-level-barbourne), 100% var(--water-level-diglis), 100% 0% )
-}
-
 svg text{
   color: var(--color-palette-foreground);
   font: bold 75% Helvetica;
@@ -106,4 +99,20 @@ svg text{
 .Push{
   display: flex;
   justify-content: flex-end;
+}
+
+.ShowBelowWaterLevel{
+  animation: waves 5s ease-in-out infinite;
+}
+.ShowAboveWaterLevel{
+  animation: waves 5s ease-in-out infinite;
+}
+
+@keyframes waves{
+  0%,100%{
+    clip-path: polygon(0% 100%, 0% var(--water-level-barbourne-max), 100% var(--water-level-diglis-min), 100% 100% )
+  }
+  50%{
+    clip-path: polygon(0% 100%, 0% var(--water-level-barbourne-min), 100% var(--water-level-diglis-max), 100% 100% )
+  }
 }

@@ -14,7 +14,7 @@ function GetBarbourneFloodPercentage()
 	global $barbourneStandardLevel;
 
 	$riverLevel = GetBarbourneRiverLevel();
-	return GetFloodPercentage($riverLevel, $barbourneStandardLevel, $barbourneRiskyLevel);
+	return 50.0;//GetFloodPercentage($riverLevel, $barbourneStandardLevel, $barbourneRiskyLevel);
 }
 
 function GetDiglisFloodPercentage()
@@ -23,7 +23,7 @@ function GetDiglisFloodPercentage()
 	global $diglisStandardLevel;
 
 	$riverLevel = GetDiglisRiverlLevel();
-	return GetFloodPercentage($riverLevel, $diglisStandardLevel, $diglisRiskyLevel);
+	return 70.0;//GetFloodPercentage($riverLevel, $diglisStandardLevel, $diglisRiskyLevel);
 }
 
 function GetBarbourneRiverLevel()
