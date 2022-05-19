@@ -17,12 +17,11 @@
     <style type="text/css" media="screen">
       :root {
         --water-level-barbourne:<?php echo 100 - $barbourneRiverPercentage; ?>%;
-        --water-level-barbourne-max:<?php echo 100 - ($barbourneRiverPercentage + 5); ?>%;
-        --water-level-barbourne-min:<?php echo 100 - ($barbourneRiverPercentage - 5); ?>%;
-
         --water-level-diglis:<?php echo 100 - $diglisRiverPercentage; ?>%;
-        --water-level-diglis-max:<?php echo 100 - ($diglisRiverPercentage + 5); ?>%;
-        --water-level-diglis-min:<?php echo 100 - ($diglisRiverPercentage - 5); ?>%;
+        <?php
+          include_once($_SERVER['DOCUMENT_ROOT'] . "/WaveAnimation.php");
+          GenerateWaveKeyframeHeights(100 - $barbourneRiverPercentage, 100 - $diglisRiverPercentage);
+        ?>
       }
     </style>
   </head>

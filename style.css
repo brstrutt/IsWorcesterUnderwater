@@ -102,17 +102,65 @@ svg text{
 }
 
 .ShowBelowWaterLevel{
-  animation: waves 5s ease-in-out infinite;
+  animation: waves 10s linear infinite;
 }
 .ShowAboveWaterLevel{
-  animation: waves 5s ease-in-out infinite;
+  animation: antiwaves 10s linear infinite;
 }
 
+
 @keyframes waves{
-  0%,100%{
-    clip-path: polygon(0% 100%, 0% var(--water-level-barbourne-max), 100% var(--water-level-diglis-min), 100% 100% )
+  0%{
+    clip-path: polygon(0% 100%,
+      var(--Keyframe0),
+      100% 100% );
+  }
+  25%{
+    clip-path: polygon(0% 100%,
+      var(--Keyframe1),
+      100% 100% );
   }
   50%{
-    clip-path: polygon(0% 100%, 0% var(--water-level-barbourne-min), 100% var(--water-level-diglis-max), 100% 100% )
+    clip-path: polygon(0% 100%,
+      var(--Keyframe2),
+      100% 100% );
+  }
+  75%{
+    clip-path: polygon(0% 100%,
+      var(--Keyframe3),
+      100% 100% );
+  }
+  100%{
+    clip-path: polygon(0% 100%,
+      var(--Keyframe0),
+      100% 100% );
+  }
+}
+
+@keyframes antiwaves{
+  0%{
+    clip-path: polygon(0% 0%,
+      var(--Keyframe0),
+      100% 0% );
+  }
+  25%{
+    clip-path: polygon(0% 0%,
+      var(--Keyframe1),
+      100% 0% );
+  }
+  50%{
+    clip-path: polygon(0% 0%,
+      var(--Keyframe2),
+      100% 0% );
+  }
+  75%{
+    clip-path: polygon(0% 0%,
+      var(--Keyframe3),
+      100% 0% );
+  }
+  100%{
+    clip-path: polygon(0% 0%,
+      var(--Keyframe0),
+      100% 0% );
   }
 }
