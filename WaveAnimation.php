@@ -1,6 +1,6 @@
 <?php
 
-/*class coord
+class coord
 {
     public float $x;
     public float $y;
@@ -56,7 +56,7 @@ class key_frame
     {
         return count($this->points);
     }
-}*/
+}
 
 // Waves need to be on a line that is at an angle. So We gotta interpolate a bunch of 
 // heights and then generate 4 sets of keyframes to use for the animation
