@@ -62,13 +62,12 @@ class key_frame
 // heights and then generate 4 sets of keyframes to use for the animation
 function GenerateWaveKeyframeHeights($leftHeight, $rightHeight)
 {
-    echo "soup";
-    /*$keyFrames = GenerateKeyframes($leftHeight, $rightHeight, 1);
+    $keyFrames = GenerateKeyframes($leftHeight, $rightHeight, 1);
 
-    EchoKeyframesAsCssVariables($keyFrames);*/
+    EchoKeyframesAsCssVariables($keyFrames);
 }
 
-/*function GenerateKeyframes($leftHeight, $rightHeight, $waveHeight)
+function GenerateKeyframes($leftHeight, $rightHeight, $waveHeight)
 {
     $numOfPoints = 40;
     $coreWave = GenerateWave($leftHeight, $rightHeight, $waveHeight, $numOfPoints);
@@ -156,5 +155,5 @@ function EchoKeyframesAsCssVariables($keyFrames)
 
         echo $keyframeString . ";\n";
     }
-}*/
+}
 ?>
