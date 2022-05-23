@@ -1,91 +1,159 @@
 <?php
+
+class coord
+{
+    public float $x;
+    public float $y;
+
+    function __construct(float $x, float $y)
+    {
+        $this->x = $x;
+        $this->y = $y;
+    }
+
+    function translate(coord $translation)
+    {
+        $this->x += $translation->x;
+        $this->y += $translation->y;
+    }
+
+    function multiply(float $scale)
+    {
+        return new coord($this->x * $scale, $this->y * $scale);
+    }
+
+    function AsString()
+    {
+        return $this->x . "% " . $this->y; 
+    }
+}
+
+class key_frame
+{
+    public array $points = array();
+
+    function __clone()
+    {
+        $clonedArray = array();
+        for($i = 0; $i < count($this->points); $i++)
+        {
+            array_push($clonedArray, clone $this->points[$i]);
+        }
+        $this->points = $clonedArray;
+    }
+
+    function AppendPoint(coord $point)
+    {
+        array_push($this->points, $point);
+    }
+
+    function RemovePoint(int $index)
+    {
+        \array_splice($this->points, $index, 1);
+    }
+
+    function Size()
+    {
+        return count($this->points);
+    }
+}
+
 // Waves need to be on a line that is at an angle. So We gotta interpolate a bunch of 
 // heights and then generate 4 sets of keyframes to use for the animation
 function GenerateWaveKeyframeHeights($leftHeight, $rightHeight)
 {
-    $keyHeights = InterpolateLine($leftHeight, $rightHeight, 5);
-
-    $keyFrames = array();
-
-    for($i = 0; $i < 4; $i++)
-    {
-        array_push($keyFrames, GenerateKeyframe($keyHeights, $i, 2));
-    }
+    $keyFrames = GenerateKeyframes($leftHeight, $rightHeight, 1);
 
     EchoKeyframesAsCssVariables($keyFrames);
 }
 
-function InterpolateLine($leftHeight, $rightHeight, $numOfKeyHeights)
+function GenerateKeyframes($leftHeight, $rightHeight, $waveHeight)
 {
-    $heightDiffBetweenPoints = ($rightHeight - $leftHeight) / ($numOfKeyHeights - 1);
-    $keyHeights = array();
+    $numOfPoints = 40;
+    $coreWave = GenerateWave($leftHeight, $rightHeight, $waveHeight, $numOfPoints);
 
-    for($i = 0; $i < $numOfKeyHeights; $i++)
+    $translationBetweenFrames = new coord(100/($numOfPoints - 1), ($rightHeight - $leftHeight) / ($numOfPoints - 1));
+
+    $keyFrames = array();
+    for($i = 0; $i < $numOfPoints; $i++)
     {
-        array_push($keyHeights, $leftHeight + ($heightDiffBetweenPoints * $i));
+        $newKeyFrame = clone $coreWave;
+        $newKeyFrame = MoveKeyframePoints($newKeyFrame, $translationBetweenFrames->multiply($i * -1));
+        $newKeyFrame = CycleKeyframePoints($newKeyFrame, $translationBetweenFrames);
+        array_push($keyFrames, $newKeyFrame);
     }
-
-    return $keyHeights;
+    return $keyFrames;
 }
 
-function GenerateKeyframe($originalHeights, $keyframeNum, $waveHeight)
+function GenerateWave($leftHeight, $rightHeight, $waveHeight, $numOfPoints)
 {
-    $keyFrame = $originalHeights;
-    switch($keyframeNum)
+    $wave = InterpolateLine($leftHeight, $rightHeight, $numOfPoints);
+
+    for($i = 0; $i < $wave->Size(); $i++)
     {
-        case 0:
-            $keyFrame[0] += $waveHeight;
-            $keyFrame[2] -= $waveHeight;
-            $keyFrame[4] += $waveHeight;
-            break;
-        case 1:
-            $keyFrame[1] -= $waveHeight;
-            $keyFrame[3] += $waveHeight;
-            break;
-        case 2:
-            $keyFrame[0] -= $waveHeight;
-            $keyFrame[2] += $waveHeight;
-            $keyFrame[4] -= $waveHeight;
-            break;
-        case 3:
-            $keyFrame[1] += $waveHeight;
-            $keyFrame[3] -= $waveHeight;
-            break;
+        if(($i % 4) == 0) $wave->points[$i]->y += $waveHeight;
+        else if(($i % 2) == 0)  $wave->points[$i]->y -= $waveHeight;
+    }
+    
+    return $wave;
+}
+
+function InterpolateLine($leftHeight, $rightHeight, $numOfPoints)
+{
+    $heightDiffBetweenPoints = ($rightHeight - $leftHeight) / ($numOfPoints - 1);
+    $widthDiffBetweenPoints = 100/($numOfPoints - 1);
+
+    $keyPoints = new key_frame();
+    for($i = 0; $i < $numOfPoints; $i++)
+    {
+        $keyPoints->AppendPoint(new coord($widthDiffBetweenPoints * $i, $leftHeight + ($heightDiffBetweenPoints * $i)));
+    }
+
+    return $keyPoints;
+}
+
+function MoveKeyframePoints($keyFrame, coord $translation)
+{
+    for($i = 0; $i < $keyFrame->Size(); $i++)
+    {
+        $keyFrame->points[$i]->translate($translation);
     }
     return $keyFrame;
 }
 
-/*function InterpolateBetweenKeyPoints($keyPoints)
+// Move any key frame points that got shifted too far left back around to be on the right
+function CycleKeyframePoints($keyFrame, $translation)
 {
-    $expandedPointset = array();
-
-    for($i = 0; $i < count($keyPoints) - 1; $i++)
+    for($i = 0; $i < $keyFrame->Size(); $i++)
     {
-        array_push($expandedPointset, $keyPoints[$i]);
-
-        $diff
+        if($keyFrame->points[$i]->x < 0)
+        {
+            $movingPoint = clone $keyFrame->points[$i];
+            $keyFrame->RemovePoint($i);
+            $movingPoint->translate($translation->multiply($keyFrame->Size() + 1));
+            $keyFrame->AppendPoint($movingPoint);
+            $i--;
+        }
     }
-
-    array_push($expandedPointset, $keyPoints[count($keyPoints) - 1]);
-    return $expandedPointset;
-}*/
+    return $keyFrame;
+}
 
 function EchoKeyframesAsCssVariables($keyFrames)
 {
     for($i = 0; $i < count($keyFrames); $i++)
     {
+        $keyFrame = $keyFrames[$i];
         $keyframeString = "--Keyframe" . $i . ":";
-        $widthDifferenceBetweenPoints = 25;
-        for($j = 0; $j < count($keyFrames[$i]); $j++)
+        for($j = 0; $j < $keyFrame->Size(); $j++)
         {
-            $keyframeString = $keyframeString . ($widthDifferenceBetweenPoints * $j) . "% " . $keyFrames[$i][$j] . "%";
-            if($j < count($keyFrames[$i]) - 1)
+            $keyframeString = $keyframeString . $keyFrame->points[$j]->AsString() . "%";
+            if($j < $keyFrame->Size() - 1)
             {
                 $keyframeString = $keyframeString . ", ";
             }
         }
 
-        echo $keyframeString . ";";
+        echo $keyframeString . ";\n";
     }
 }
 ?>

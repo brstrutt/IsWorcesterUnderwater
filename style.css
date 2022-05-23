@@ -43,9 +43,23 @@ a:visited{ color: blue; }
   grid-template-rows: max-content auto max-content;
 }
 
-.background_water{
+.clipping_water{
   z-index: -1;
   background-color: blue;
+}
+
+.background_water{
+  z-index: -2;
+  background-color: aqua;
+  animation: waves 10s linear infinite;
+  animation-delay: -3s;
+}
+
+.background_water_2{
+  z-index: -3;
+  background-color: cadetblue;
+  animation: waves 10s ease-in-out infinite;
+  animation-delay: -6s;
 }
 
 header{
