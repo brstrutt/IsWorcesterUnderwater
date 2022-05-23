@@ -2,22 +2,22 @@
 
 class coord
 {
-    public float $x;
-    public float $y;
+    public $x;
+    public $y;
 
-    function __construct(float $x, float $y)
+    function __construct($x, $y)
     {
         $this->x = $x;
         $this->y = $y;
     }
 
-    function translate(coord $translation)
+    function translate($translation)
     {
         $this->x += $translation->x;
         $this->y += $translation->y;
     }
 
-    function multiply(float $scale)
+    function multiply($scale)
     {
         return new coord($this->x * $scale, $this->y * $scale);
     }
@@ -30,7 +30,7 @@ class coord
 
 class key_frame
 {
-    public array $points = array();
+    public $points = array();
 
     function __clone()
     {
@@ -42,12 +42,12 @@ class key_frame
         $this->points = $clonedArray;
     }
 
-    function AppendPoint(coord $point)
+    function AppendPoint($point)
     {
         array_push($this->points, $point);
     }
 
-    function RemovePoint(int $index)
+    function RemovePoint($index)
     {
         \array_splice($this->points, $index, 1);
     }
